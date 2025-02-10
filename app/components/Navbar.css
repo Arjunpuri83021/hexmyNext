@@ -1,0 +1,56 @@
+.content {
+ margin-left: 70px;
+}
+
+.content h2 {
+	color: #e83e3e;
+	font-size: 40px; /* Adjusted font size */
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+
+.content h2:nth-child(1) {
+	color: transparent;
+	-webkit-text-stroke: 1px #000000; /* Reduced stroke width to suit smaller font */
+  letter-spacing: 5px;
+}
+
+.content h2:nth-child(2) {
+	color: #000000;
+	animation: animate 4s ease-in-out infinite;
+  letter-spacing: 5px;
+}
+
+
+
+@keyframes animate {
+	0%,
+	100% {
+		clip-path: polygon(
+			0% 45%,
+			16% 44%,
+			33% 50%,
+			54% 60%,
+			70% 61%,
+			84% 59%,
+			100% 52%,
+			100% 100%,
+			0% 100%
+		);
+	}
+
+	50% {
+		clip-path: polygon(
+			0% 60%,
+			15% 65%,
+			34% 66%,
+			51% 62%,
+			67% 50%,
+			84% 45%,
+			100% 46%,
+			100% 100%,
+			0% 100%
+		);
+	}
+}
