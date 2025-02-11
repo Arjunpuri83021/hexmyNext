@@ -10,7 +10,7 @@ export const generateMetadata = ({ params }) => {
     const currentPage = params.page || 1;
   
     return {
-      title: `xvids xxbrits altyaazili porno alt yazili porno | Hexmy`,  
+      title: `new xvids xxbrits altyaazili porno alt yazili porno | Hexmy`,  
       description: `Influencersgonewild xvide xvids xvideo xvodeos sex izle hentairead jessenia rebecca porn megbanksxo pornp phim sex vietsub mckenzie valdez leaked | hexmy`, 
       alternates: {
         canonical: `https://hexmy.com/${currentPage}`,
@@ -47,11 +47,12 @@ export default async function Home({ params }) {
       <Navbar />
       <Tab />
 
-      <Grid container spacing={3}>
+      
+      <Grid spacing={3}>
         {data.records.length > 0 ? (
           data.records.map((item,index) => (
             <Grid item xs={12} sm={6} md={4} key={item._id}>
-              <Link href={`/playVideo/${item._id}`} passHref>
+              <Link href={`/playVideo1/${item._id}`} passHref>
                 <Card>
                   <CardMedia loading="lazy" component="img" height="250" image={item.imageUrl} alt={item.titel} />
                   <CardContent>

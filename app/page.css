@@ -1,18 +1,3 @@
-@media(max-width:560px){
-    .MuiGrid-container{
-        width: 90% !important;
-        margin: auto !important;
-    }
-    
-    .css-up6ejd-MuiContainer-root{
-        margin-left: 0px !important;
-    }
-    
-    .css-1qw2a80-MuiGrid-root>.MuiGrid-item{
-        padding-left: 0px !important;
-    }
-    
-    .css-up6ejd-MuiContainer-root{
-        padding-left: 0px !important;
-    }
+body{
+    background-color: white !important;
 }
