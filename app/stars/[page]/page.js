@@ -31,7 +31,7 @@ async function fetchStars(page) {
     if (!res.ok) throw new Error("Failed to fetch data");
 
     const data = await res.json();
-    
+
     // Handle case where no stars are found (invalid page)
     if (!data.records || data.records.length === 0) {
       return notFound(); // Show 404 if page is invalid
@@ -48,7 +48,7 @@ async function fetchStars(page) {
 
 export default async function PornStars({ params }) {
   const page = parseInt(params.page || "1", 10);
-  
+
   // Ensure the page number is valid
   if (isNaN(page) || page < 1) {
     return notFound();
@@ -65,21 +65,21 @@ export default async function PornStars({ params }) {
       </Head>
 
       <Navbar />
-      <Tab/>
+      <Tab />
       <div style={{ width: "95%", margin: "auto", marginTop: "30px" }}>
-        <h1>Porn Stars</h1>
+        <h1 style={{color:"black"}}>Porn Stars</h1>
 
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
           {stars.length > 0 ? (
             stars.map((name, index) => (
               <Link href={`/pornstar/${name}`} key={index} style={{ margin: "10px", textAlign: "center", textDecoration: "none" }}>
-               <Image 
-  src="/female.png" 
-  alt={name} 
-  width={120} 
-  height={120} 
-  style={{ objectFit: "cover" }} 
-/>
+                <Image
+                  src="/female.png"
+                  alt={name}
+                  width={120}
+                  height={120}
+                  style={{ objectFit: "cover" }}
+                />
                 <h2 style={{ color: "#000" }}>{name}</h2>
               </Link>
             ))

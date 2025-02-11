@@ -72,7 +72,7 @@ export default async function VideoPage({ params }) {
       <Navbar />
       <Tab />
       <Container sx={{ marginTop: "20px" }}>
-        <h1 style={{ textAlign: "center", marginBottom: "10px" }}>{videoData.titel}</h1>
+        <h1 style={{ textAlign: "center", marginBottom: "10px", color:"black" }}>{videoData.titel}</h1>
         <Card>
           <a href={videoData.link} target="_blank" rel="noopener noreferrer" className="video-container">
             <CardMedia loading="lazy" component="img" image={videoData.imageUrl} alt={videoData.titel} className="video-thumbnail" />
@@ -105,7 +105,7 @@ export default async function VideoPage({ params }) {
 
         {/* Related Videos Section */}
         <Container sx={{ marginTop: "20px" }}>
-          <Typography variant="h4" gutterBottom>Related Videos</Typography>
+          <Typography sx={{ color: "black" }} variant="h4" gutterBottom>Related Videos</Typography>
           <Grid container spacing={4}>
             {relatedVideos.map((video) => (
               <Grid item key={video._id} xs={12} sm={6} md={4}>

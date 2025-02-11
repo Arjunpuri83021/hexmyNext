@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container, Grid, Card, CardMedia, CardContent, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
 import Tab from "../../components/tabs/tab";
-import LoadMoreVideos from "./LoadMoreVideos"; 
+import LoadMoreVideos from "./LoadMoreVideos";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -31,9 +31,9 @@ export default async function PornstarPage({ params }) {
       <Navbar />
       <Tab />
       <Container sx={{ marginTop: "20px" }}>
-      <Typography sx={{ fontSize: "20px", textAlign: "center", marginBottom: "20px" }} variant="h1" gutterBottom>
-  All best time Videos of &quot;{name.replace(/-/g, " ")}&quot; | Hexmy
-</Typography>
+        <Typography sx={{ fontSize: "20px", textAlign: "center", marginBottom: "20px", color: "black" }} variant="h1" gutterBottom>
+          All best time Videos of &quot;{name.replace(/-/g, " ")}&quot; | Hexmy
+        </Typography>
 
 
         <Grid container spacing={4}>
@@ -66,15 +66,15 @@ export async function generateMetadata({ params }) {
   return {
     title: `${name.replace(/-/g, " ")} hot sex videos ,goodporn,4k anal,pornhits,sex18,xxxnx`,
     description: `${name.replace(/-/g, " ")} Free huge tits Porn Videos, Free ${name.replace(
-        /-/g,
-        " "
-      )} family sex & Enjoy cheating bhabhi porn, big natural boobs, download vporn sex videos or stream sex hub and pornhut videos.`,
+      /-/g,
+      " "
+    )} family sex & Enjoy cheating bhabhi porn, big natural boobs, download vporn sex videos or stream sex hub and pornhut videos.`,
     alternates: {
       canonical: `https://hexmy.com/pornstar/${name}`,
     },
     robots: {
-      index: true, 
-      follow: true, 
+      index: true,
+      follow: true,
     },
   };
 }
