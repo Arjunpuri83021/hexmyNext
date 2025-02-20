@@ -1,5 +1,4 @@
 import Navbar from "../../components/Navbar";
-import Tab from "../../components/tabs/tab";
 import { Card, CardMedia, CardContent, Typography, Grid } from "@mui/material";
 import Link from "next/link";
 import PaginationComponent from "../../components/PaginationComponent"; // Adjust the path
@@ -42,7 +41,6 @@ export default async function HijabiPage({ params }) {
   return (
     <div>
       <Navbar />
-      <Tab />
 
       <Grid sx={{width:"95%", margin:"100px auto auto auto"}} container spacing={3}>
         {data.records.length > 0 ? (

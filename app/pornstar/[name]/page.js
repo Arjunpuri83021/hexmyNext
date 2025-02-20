@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Container, Grid, Card, CardMedia, CardContent, Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
-import Tab from "../../components/tabs/tab";
 import LoadMoreVideos from "./LoadMoreVideos";
 import "./PornstarPage.css"
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -29,7 +28,6 @@ export default async function PornstarPage({ params }) {
   return (
     <>
       <Navbar />
-      <Tab />
       <Container sx={{ marginTop: "20px", background:"white"}}>
         <Typography sx={{ fontSize: "20px", textAlign: "center", marginBottom: "20px", color: "black" }} variant="h1" gutterBottom>
           All best time Videos of &quot;{name.replace(/-/g, " ")}&quot; | Hexmy

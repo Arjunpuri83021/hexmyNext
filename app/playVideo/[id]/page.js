@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Container, Typography, Card, CardMedia, CardContent, Grid } from "@mui/material";
 import Navbar from "../../components/Navbar";
-import Tab from "../../components/tabs/tab";
 import LoadMoreVideos from "../../components/LoadMoreVideos"; // Load More Client Component
 import "./videoPage.css";
 
@@ -70,7 +69,6 @@ export default async function VideoPage({ params }) {
   return (
     <>
       <Navbar />
-      <Tab />
       <Container sx={{ marginTop: "140px" }}>
         <h1 style={{ textAlign: "center", marginBottom: "10px", color:"black" }}>{videoData.titel}</h1>
         <Card>

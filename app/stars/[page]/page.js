@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
-import Tab from "../../components/tabs/tab"
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
@@ -65,7 +64,6 @@ export default async function PornStars({ params }) {
       </Head>
 
       <Navbar />
-      <Tab />
       <div style={{ width: "95%", margin: "auto",}}>
         <h1 style={{color:"black", marginTop:"140px"}}>Porn Stars</h1>
 
