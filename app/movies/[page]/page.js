@@ -3,6 +3,7 @@ import Tab from "../../components/tabs/tab";
 import { Card, CardMedia, CardContent, Typography, Grid } from "@mui/material";
 import Link from "next/link";
 import PaginationComponent from "../../components/PaginationComponent"; // Adjust the path
+import "../../page.css"
 
 export const generateMetadata = ({ params }) => {
   const currentPage = params.page || 1;
@@ -43,10 +44,10 @@ export default async function IndianPage({ params }) {
       <Navbar />
       <Tab />
 
-      <Grid container spacing={3}>
+      <Grid sx={{width:"95%", margin:"100px auto auto auto"}} container spacing={3}>
         {data.records.length > 0 ? (
           data.records.map((item, index) => (
-            <Grid item xs={12} sm={4} md={6} key={item._id}>
+            <Grid className="new-section" item xs={12} sm={4} md={3} key={item._id}>
               <Link href={`/playVideo/${item._id}`} passHref>
                 <Card>
                   <CardMedia loading="lazy" component="img" height="250" image={item.imageUrl} alt={item.titel} />

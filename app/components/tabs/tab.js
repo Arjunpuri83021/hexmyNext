@@ -29,19 +29,7 @@ export default function TabsSlider() {
 
   return (
     <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-      <Tabs
-        value={currentTab}
-        onChange={handleChange}
-        textColor="secondary"
-        indicatorColor="secondary"
-        variant="scrollable"
-        scrollButtons="auto"
-        aria-label="Fashion Tabs"
-      >
-        {tabs.map((tab) => (
-          <Tab key={tab.path} value={tab.path} label={tab.label} />
-        ))}
-      </Tabs>
+     
     </Box>
   );
 }

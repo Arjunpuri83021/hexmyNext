@@ -71,7 +71,7 @@ export default async function VideoPage({ params }) {
     <>
       <Navbar />
       <Tab />
-      <Container sx={{ marginTop: "20px" }}>
+      <Container sx={{ marginTop: "140px" }}>
         <h1 style={{ textAlign: "center", marginBottom: "10px", color:"black" }}>{videoData.titel}</h1>
         <Card>
           <a href={videoData.link} target="_blank" rel="noopener noreferrer" className="video-container">

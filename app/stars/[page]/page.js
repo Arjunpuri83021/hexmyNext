@@ -66,10 +66,10 @@ export default async function PornStars({ params }) {
 
       <Navbar />
       <Tab />
-      <div style={{ width: "95%", margin: "auto", marginTop: "30px" }}>
-        <h1 style={{color:"black"}}>Porn Stars</h1>
+      <div style={{ width: "95%", margin: "auto",}}>
+        <h1 style={{color:"black", marginTop:"140px"}}>Porn Stars</h1>
 
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around", marginTop:"0px"}}>
           {stars.length > 0 ? (
             stars.map((name, index) => (
               <Link href={`/pornstar/${name}`} key={index} style={{ margin: "10px", textAlign: "center", textDecoration: "none" }}>

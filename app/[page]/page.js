@@ -48,10 +48,10 @@ export default async function Home({ params }) {
       <Tab />
 
       
-      <Grid container spacing={3}>
+      <Grid  sx={{width:"95%", margin:"100px auto auto auto"}} container spacing={3}>
         {data.records.length > 0 ? (
           data.records.map((item,index) => (
-            <Grid item xs={12} sm={6} md={4} key={item._id}>
+            <Grid className="new-section" item xs={12} sm={6} md={3} key={item._id}>
               <Link href={`/playVideo/${item._id}`} passHref>
                 <Card>
                   <CardMedia loading="lazy" component="img" height="250" image={item.imageUrl} alt={item.titel} />
