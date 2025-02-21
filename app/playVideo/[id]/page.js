@@ -6,6 +6,17 @@ import "./videoPage.css";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
+// Function to fetch video data
+async function fetchVideoData(id) {
+  try {
+    const response = await fetch(`${apiUrl}/getVideo/${id}`, { method: "POST", cache: "no-store" });
+    if (!response.ok) throw new Error("Failed to fetch video");
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching video data:", error);
+    return null;
+  }
+}
 
 export async function generateMetadata({ params }) {
   const videoData = await fetchVideoData(params.id);
@@ -23,39 +34,13 @@ export async function generateMetadata({ params }) {
 }
 
 
-// Function to fetch video data
-async function fetchVideoData(id) {
-  try {
-    const response = await fetch(`${apiUrl}/getVideo/${id}`, { method: "POST", cache: "no-store" });
-    if (!response.ok) throw new Error("Failed to fetch video");
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching video data:", error);
-    return null;
-  }
-}
-
-// Function to fetch related videos
-async function fetchRelatedVideos(title, page) {
-  try {
-    const response = await fetch(`${apiUrl}/relatedpostData?search=${title}&page=${page}&limit=16`, { cache: "no-store" });
-    if (!response.ok) throw new Error("Failed to fetch related videos");
-    const data = await response.json();
-    return data.records || [];
-  } catch (error) {
-    console.error("Error fetching related videos:", error);
-    return [];
-  }
-}
-
 export default async function VideoPage({ params }) {
   const { id } = params;
   const videoData = await fetchVideoData(id);
-  if (!videoData) {
-    return <Typography color="error">Failed to load video.</Typography>;
+
+  if (!videoData || !videoData.titel) {
+    return <Typography color="error">Loading...</Typography>;
   }
-  
-  const relatedVideos = await fetchRelatedVideos(videoData.titel, 1);
 
   const formatViews = (views) => {
     const adjustedViews = Math.floor(views * 0.7);
@@ -64,13 +49,25 @@ export default async function VideoPage({ params }) {
     return adjustedViews.toString();
   };
 
-  
+  async function fetchRelatedVideos(title, page) {
+    try {
+      const response = await fetch(`${apiUrl}/relatedpostData?search=${title}&page=${page}&limit=16`, { cache: "no-store" });
+      if (!response.ok) throw new Error("Failed to fetch related videos");
+      const data = await response.json();
+      return data.records || [];
+    } catch (error) {
+      console.error("Error fetching related videos:", error);
+      return [];
+    }
+  }
+
+  const relatedVideos = await fetchRelatedVideos(videoData.titel, 1);
 
   return (
     <>
       <Navbar />
       <Container sx={{ marginTop: "140px" }}>
-        <h1 style={{ textAlign: "center", marginBottom: "10px", color:"black" }}>{videoData.titel}</h1>
+        <h1 style={{ textAlign: "center", marginBottom: "10px", color: "black" }}>{videoData.titel}</h1>
         <Card>
           <a href={videoData.link} target="_blank" rel="noopener noreferrer" className="video-container">
             <CardMedia loading="lazy" component="img" image={videoData.imageUrl} alt={videoData.titel} className="video-thumbnail" />
@@ -122,9 +119,9 @@ export default async function VideoPage({ params }) {
               </Grid>
             ))}
           </Grid>
-          
+
           {/* Load More Button - Moves to a Client Component */}
-          <LoadMoreVideos initialVideos={relatedVideos} title={videoData.titel} />
+          <LoadMoreVideos title={videoData.titel} />
         </Container>
       </Container>
     </>
