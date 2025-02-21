@@ -38,7 +38,7 @@ async function fetchVideoData(id) {
 // Function to fetch related videos
 async function fetchRelatedVideos(title, page) {
   try {
-    const response = await fetch(`${apiUrl}/relatedpostData?search=${title}&page=${page}&limit=8`, { cache: "no-store" });
+    const response = await fetch(`${apiUrl}/relatedpostData?search=${title}&page=${page}&limit=16`, { cache: "no-store" });
     if (!response.ok) throw new Error("Failed to fetch related videos");
     const data = await response.json();
     return data.records || [];

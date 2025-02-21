@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
+import { Grid, Card, CardMedia, CardContent, Typography, Button, Box, CircularProgress } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 // Function to fetch more related videos
 async function fetchRelatedVideos(title, page) {
   try {
-    const response = await fetch(`${apiUrl}/relatedpostData?search=${title}&page=${page}&limit=8`, { cache: "no-store" });
+    const response = await fetch(`${apiUrl}/relatedpostData?search=${title}&page=${page}&limit=16`, { cache: "no-store" });
     if (!response.ok) throw new Error("Failed to fetch related videos");
     const data = await response.json();
     return data.records || [];
@@ -22,17 +23,18 @@ async function fetchRelatedVideos(title, page) {
 // ✅ Client Component for Load More Feature
 export default function LoadMoreVideos({ initialVideos, title }) {
   const [relatedVideos, setRelatedVideos] = useState(initialVideos);
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const router = useRouter(); // ✅ Use Next.js router for redirection
 
   // Function to load more videos
   async function loadMoreVideos() {
-    setLoading(true);
-    const nextPage = page + 1;
-    const newVideos = await fetchRelatedVideos(title, nextPage);
-    setRelatedVideos((prev) => [...prev, ...newVideos]);
-    setPage(nextPage);
-    setLoading(false);
+    setLoading(true); // Show loader
+
+    // Simulating an API call delay (optional)
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    setLoading(false); // Hide loader
+    router.push("/1"); // Redirect to the new page
   }
 
   return (
@@ -52,12 +54,18 @@ export default function LoadMoreVideos({ initialVideos, title }) {
         ))}
       </Grid>
 
-      {/* Load More Button */}
-      <div style={{ textAlign: "center", marginTop: "40px" }}>
-        <Button variant="contained" color="dark" onClick={loadMoreVideos} disabled={loading}>
-          {loading ? "Loading..." : "Load More.."}
+      {/* Centered Load More Button with Loading Spinner */}
+      <Box display="flex" justifyContent="center" marginTop="40px">
+        <Button
+          variant="contained"
+          color="dark"
+          onClick={loadMoreVideos}
+          disabled={loading}
+          
+        >
+          {loading ? <CircularProgress size={24} color="inherit" /> : "Load More.."}
         </Button>
-      </div>
+      </Box>
     </>
   );
 }
