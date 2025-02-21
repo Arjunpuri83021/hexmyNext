@@ -5,36 +5,21 @@ import { Grid, Card, CardMedia, CardContent, Typography, Button, Box, CircularPr
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-// Function to fetch more related videos
-async function fetchRelatedVideos(title, page) {
-  try {
-    const response = await fetch(`${apiUrl}/relatedpostData?search=${title}&page=${page}&limit=16`, { cache: "no-store" });
-    if (!response.ok) throw new Error("Failed to fetch related videos");
-    const data = await response.json();
-    return data.records || [];
-  } catch (error) {
-    console.error("Error fetching related videos:", error);
-    return [];
-  }
-}
 
-// ✅ Client Component for Load More Feature
-export default function LoadMoreVideos({ initialVideos, title }) {
-  const [relatedVideos, setRelatedVideos] = useState(initialVideos);
+
+export default function LoadMoreVideos() {
   const [loading, setLoading] = useState(false);
-  const router = useRouter(); // ✅ Use Next.js router for redirection
+  const router = useRouter();
 
-  // Function to load more videos
   async function loadMoreVideos() {
-    setLoading(true); // Show loader
+    setLoading(true); 
 
-    // Simulating an API call delay (optional)
+   
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    setLoading(false); // Hide loader
-    router.push("/1"); // Redirect to the new page
+    setLoading(false);
+    router.push("/1");
   }
 
   return (
@@ -54,7 +39,7 @@ export default function LoadMoreVideos({ initialVideos, title }) {
         ))}
       </Grid>
 
-      {/* Centered Load More Button with Loading Spinner */}
+      
       <Box display="flex" justifyContent="center" marginTop="40px">
         <Button
           variant="contained"
