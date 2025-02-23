@@ -28,7 +28,7 @@ export default async function PornstarPage({ params }) {
   return (
     <>
       <Navbar />
-      <Container sx={{ marginTop: "20px", background:"white"}}>
+      <Container sx={{ marginTop: "140px", background:"white"}}>
         <Typography sx={{ fontSize: "20px", textAlign: "center", marginBottom: "20px", color: "black" }} variant="h1" gutterBottom>
           All best time Videos of &quot;{name.replace(/-/g, " ")}&quot; | Hexmy
         </Typography>

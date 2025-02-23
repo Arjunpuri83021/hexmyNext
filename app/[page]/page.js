@@ -41,6 +41,8 @@ export default async function Home({ params }) {
     console.error("Error fetching data:", error);
   }
 
+  
+
   return (
     <div>
       <Navbar />
