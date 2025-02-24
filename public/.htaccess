@@ -1,0 +1,17 @@
+# Enable Rewrite Engine
+RewriteEngine On
+RewriteBase /
+
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://hexmy.com/$1 [L,R=301]
+
+# Redirect HTTP to HTTPS (Fixed to Avoid Loop)
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://hexmy.com/$1 [L,R=301]
+
+# Ensure robots.txt and sitemap.xml are accessible for Googlebot
+RewriteCond %{REQUEST_URI} !^/(robots\.txt|sitemap\.xml|api/) [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

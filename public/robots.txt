@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /author
+Disallow: /admin
+Disallow: /404
+
+Allow: /
+
+Sitemap: https://hexmy.com/sitemap.xml
