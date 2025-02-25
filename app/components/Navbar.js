@@ -53,6 +53,8 @@ export default function PrimarySearchAppBar() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [showNavbar, setShowNavbar] = React.useState(true);
+  const [lastScrollY, setLastScrollY] = React.useState(0);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -103,9 +105,32 @@ export default function PrimarySearchAppBar() {
     }
   };
 
+  // Scroll Effect for Navbar Hide/Show
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        setShowNavbar(false); // Hide when scrolling down
+      } else {
+        setShowNavbar(true); // Show when scrolling up
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ backgroundColor: "white", color: "black" }}>
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: "white",
+          color: "black",
+          transform: showNavbar ? "translateY(0)" : "translateY(-100%)",
+          transition: "transform 0.3s ease-in-out",
+        }}
+      >
         {!searchOpen ? (
           <Toolbar>
             <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
