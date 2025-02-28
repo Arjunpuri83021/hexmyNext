@@ -93,6 +93,7 @@ export default function PrimarySearchAppBar() {
     { label: "New Videos", path: "/newVideos" },
     { label: "Popular Videos", path: "/popularVideos" },
     { label: "Top rated", path: "/toprated" },
+    { label: "ThePornDude", path: "https://theporndude.com" },
   ];
 
   const currentTab = tabs.find((tab) => pathname.startsWith(tab.path))?.path || "/1";
